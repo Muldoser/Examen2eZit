@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Windows;
 
 namespace MichielMulder2eZit14
 {
@@ -37,6 +38,31 @@ namespace MichielMulder2eZit14
         public Friend[] friends { get; set; }
         public string greeting { get; set; }
         public string favoriteFruit { get; set; }
+
+        public string ageshot
+        {
+            get
+            {
+                try
+                {
+                    if (this.age < 30)
+                    {
+                        return "http://emojipedia.org/wp-content/uploads/2014/04/1f466-google-android.png.pagespeed.ce.zEK6-ukA5P.png";
+                    }
+                    else if (this.age >= 30)
+                    {
+                        return "http://emojipedia.org/wp-content/uploads/2014/04/128x128x1f474-google-android.png.pagespeed.ic.lwGSeo98PZ.png";
+                    }
+                    else
+                        return "";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return "";
+                }
+            }
+        }
         public event NotifyCollectionChangedEventHandler CollectionChanged;
     }
 

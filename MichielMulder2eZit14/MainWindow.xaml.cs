@@ -32,15 +32,22 @@ namespace MichielMulder2eZit14
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            this.DataContext = this;
-            StreamReader r = new StreamReader("so4data.json");
-            string jsondata = r.ReadToEnd();
-            Rootobject data = JsonConvert.DeserializeObject<Rootobject>(jsondata);
-
-            allProfiles = new ObservableCollection<Personen>();
-            foreach (var p in data.Personen)
+            try
             {
-                allProfiles.Add(p);
+                this.DataContext = this;
+                StreamReader r = new StreamReader("so4data.json");
+                string jsondata = r.ReadToEnd();
+                Rootobject data = JsonConvert.DeserializeObject<Rootobject>(jsondata);
+
+                allProfiles = new ObservableCollection<Personen>();
+                foreach (var p in data.Personen)
+                {
+                    allProfiles.Add(p);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
