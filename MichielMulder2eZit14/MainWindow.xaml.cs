@@ -24,6 +24,8 @@ namespace MichielMulder2eZit14
     public partial class MainWindow : Window
     {
         public ObservableCollection<Personen> allProfiles { get; set; }
+        public ObservableCollection<Friend> AllFriends { get; set; }
+        private Rootobject data;
 
         public MainWindow()
         {
@@ -34,7 +36,7 @@ namespace MichielMulder2eZit14
         {
             try
             {
-                this.DataContext = this;
+                ProfileListing.DataContext = this;
                 StreamReader r = new StreamReader("so4data.json");
                 string jsondata = r.ReadToEnd();
                 Rootobject data = JsonConvert.DeserializeObject<Rootobject>(jsondata);
@@ -44,6 +46,47 @@ namespace MichielMulder2eZit14
                 {
                     allProfiles.Add(p);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ProfileListing_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                //MessageBox.Show(Convert.ToString(ProfileListing.SelectedIndex));
+                
+
+                InfoListing.DataContext = this;
+
+                /*ProfileListing.DataContext = this;
+                StreamReader r = new StreamReader("so4data.json");
+                string jsondata = r.ReadToEnd();
+                Rootobject data = JsonConvert.DeserializeObject<Rootobject>(jsondata);
+
+                allProfiles = new ObservableCollection<Personen>();
+
+                foreach (var p in data.Personen)
+                {
+                    allProfiles.Add(p);
+                }*/
+
+                /*foreach (var p in data.Personen)
+                {
+                    if (ProfileListing.SelectedIndex != -1)
+                    {
+                        if (ProfileListing.SelectedIndex == p.index)
+                        {
+                            MessageBox.Show(Convert.ToString(allProfiles[ProfileListing.SelectedIndex]));
+                            InfoListing.DataContext = p;
+
+                        }
+
+                    }
+                }*/
             }
             catch (Exception ex)
             {

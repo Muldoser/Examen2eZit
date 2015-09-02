@@ -12,7 +12,7 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Column="0">
-            <ListBox x:Name="ProfileListing" ItemsSource="{Binding allProfiles}">
+            <ListBox x:Name="ProfileListing" ItemsSource="{Binding allProfiles}" SelectionChanged="ProfileListing_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -47,10 +47,29 @@
                 <RowDefinition Height="5*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Row="0">
-                
+            <Grid Row="0"> <!--Show info-->
+                <ListBox x:Name="InfoListing" ItemsSource="{Binding allProfiles}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Row="0">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Path=email}"></TextBlock>
+                                        <TextBlock Text="{Binding Path=address}"></TextBlock>
+                                        <TextBlock Text="{Binding Path=about}"></TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Row="1"></Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Grid>
-            <Grid Row="1">
+            <Grid Row="1"> <!--Buttons-->
                 <StackPanel Orientation="Horizontal">
 
                 </StackPanel>
