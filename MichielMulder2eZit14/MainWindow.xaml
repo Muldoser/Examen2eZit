@@ -1,0 +1,60 @@
+﻿<Window x:Class="MichielMulder2eZit14.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MichielMulder2eZit14"
+        mc:Ignorable="d"
+        Title="Profiles" Height="350" Width="525" Loaded="MainWindow_OnLoaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Column="0">
+            <ListBox x:Name="ProfileListing" ItemsSource="{Binding allProfiles}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Column="0">
+                                <Image Source="{Binding Path=mugshot}" Height="50" Width="50"></Image>
+                            </Grid>
+                            <Grid Column="1">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Path=fullname}" Margin="10 0"></TextBlock>
+                                    <TextBlock Text="{Binding Path=company}" Margin="10 0"></TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>Leeftijd:</TextBlock>
+                                        <TextBlock Text="{Binding Path=age}"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="2">
+                                <!--<Image Source="{Binding Path=genderPicture}" Height="25" Width="25"></Image>-->
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <Grid Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Row="0">
+                
+            </Grid>
+            <Grid Row="1">
+                <StackPanel Orientation="Horizontal">
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
